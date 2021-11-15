@@ -22,8 +22,17 @@ class URLTests(TestCase):
         self.assertEqual(response['Location'], 'https://ravkavonline.co.il')
 
     def test_none_existing_shortcut(self):
-        none_existing_url = "123\><+&^%@"
-        response = self.client.get("/s/"+none_existing_url)
-        self.assertEqual(response.status_code, 404)
+        none_existing_shortcut = "-123\><+&^%@"
+        answer = Url.objects.filter(shortcut=none_existing_shortcut).exists()
+        if answer is False:
+            response = self.client.get("/s/"+none_existing_shortcut)
+            self.assertEqual(response.status_code, 404)
+
+    def test_times_followed(self):
+        shortcut_response = self.client.post("/s/create", {'full_link':'https://ravkavonline.co.il'})
+        shortcut = Url.objects.get(id=1).shortcut
+        for i in range(5):
+            response = self.client.get("/s/"+shortcut)
+        self.assertEqual(Url.objects.get(id=1).times_followed, 5)
         
         
