@@ -1,0 +1,44 @@
+{% extends 'urlshortcut/base.html' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header text-center py-3">
+            <h1>Pcentra URL Shortcut Exercise - Nir BD</h1>
+        </div>
+        <div class="px-3 py-4">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="row g-1">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">{{form.full_link}}</div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col text-center">
+                        <button class="btn btn-success btn-lg w-100" type="submit">
+                            Create Shortcut
+                        </button>
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+            </form>
+        </div>
+        {% if errors %}
+        <div class="alert alert-danger mt-4" role="alert">
+            <p>{{errors}}</p>
+        </div>
+        {% endif %}
+
+        {% if new_url %}
+
+        <div class="mx-auto text-center mt-5">
+            <h2 class="text-success">The shortcut is</h2>
+            <p class="">{{new_url}}</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock body %}
