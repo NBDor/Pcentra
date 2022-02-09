@@ -9,8 +9,8 @@ URL shorteners are mostly used in the following scenarios:
 2. Keeping track of the numbers of clicks. It’s a common practice to use URL shorteners to keep
 track of clicks in campaigns and other types of promotions
 For this exercise you'll implement a simple URL shortener in Django
-Instructions
-● Implement the exercise using Django and avoid additional dependencies
+##Instructions:
+* Implement the exercise using Django and avoid additional dependencies
 ● Use either SQLite or PostgreSQL as a database backend
 ● The project should include at least a model and a view (models.py & views.py)
 ● A short URL is unique, and different short URLs can reference the same full URL. Pay attention
